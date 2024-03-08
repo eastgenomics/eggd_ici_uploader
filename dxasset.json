@@ -1,0 +1,12 @@
+{
+  "name": "ici_asset",
+  "title": "ici-uploader CLI asset",
+  "description": "ICI",
+  "version": "0.0.1",
+  "distribution": "Ubuntu",
+  "instanceType": "mem1_ssd1_v2_x4",
+  "release": "20.04",
+  "excludeResource": [
+    "Makefile"
+  ]
+}
