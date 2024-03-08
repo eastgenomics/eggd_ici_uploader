@@ -1,0 +1,67 @@
+{
+  "name": "eggd_ici_uploader",
+  "title": "eggd_ici_uploader",
+  "summary": "Uploads genomic data files to the Illumina Connected Insights (ICI) platform",
+  "dxapi": "1.0.0",
+  "version": "0.0.1",
+  "billTo": "org-emee_1",
+  "properties": {
+      "githubRelease": "v1.0.0"
+  },
+  "developers": [
+      "user-spaul4",
+      "org-emee_1"
+  ],
+  "authorizedUsers": [
+      "org-emee_1"
+  ],
+  "inputSpec": [
+      {
+          "name": "run_folder",
+          "label": "Run Folder",
+          "class": "string",
+          "optional": false,
+          "help": "Path to folder containing pipeline output. The directory structure *must* match the directory tree specification outlined in the workflow definition - log into ICI and consult the manual for further details."
+      },
+      {
+          "name": "api_key",
+          "label": "API Key",
+          "class": "file",
+          "optional": false,
+          "help": "File containing user's API key (i.e. access credentials). Log in to ICI and view the manual for guidance on generating an API key."
+      },
+      {
+          "name": "workflow",
+          "label": "Workflow",
+          "class": "string",
+          "optional": false,
+          "help": "Name of ICI upload workflow. Workflow details are stored at the settings page on the ICI platform - please log in to ICI and view the settings page for details."
+      }
+  ],
+  "outputSpec": [],
+  "runSpec": {
+    "timeoutPolicy": {
+      "*": {
+        "hours": 48
+      }
+    },
+    "interpreter": "bash",
+    "file": "src/script.sh",
+    "distribution": "Ubuntu",
+    "release": "20.04",
+    "version": "0"
+  },
+  "access": {
+    "project": "CONTRIBUTE",
+    "network": ["illumina.com"]
+  },
+  "regionalOptions": {
+    "aws:eu-central-1": {
+      "systemRequirements": {
+        "*": {
+          "instanceType": "mem1_ssd1_v2_x4"
+        }
+      }
+    }
+  }
+}
