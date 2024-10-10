@@ -17,14 +17,14 @@
   ],
   "inputSpec": [
       {
-          "name": "run_folder",
+          "name": "runfolder",
           "label": "Run Folder",
           "class": "string",
           "optional": false,
           "help": "Path to folder containing pipeline output. The directory structure *must* match the directory tree specification outlined in the workflow definition - log into ICI and consult the manual for further details."
       },
       {
-          "name": "api_key",
+          "name": "apikey",
           "label": "API Key",
           "class": "file",
           "optional": false,
@@ -36,6 +36,13 @@
           "class": "string",
           "optional": false,
           "help": "Name of ICI upload workflow. Workflow details are stored at the settings page on the ICI platform - please log in to ICI and view the settings page for details."
+      },
+      {
+          "name": "config",
+          "label": "Config File",
+          "class": "file",
+          "optional": "false",
+          "help": "File containing upload configuration for a pipeline"
       }
   ],
   "outputSpec": [],
