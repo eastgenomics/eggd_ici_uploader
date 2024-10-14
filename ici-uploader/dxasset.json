@@ -1,0 +1,14 @@
+{
+  "name": "ici-uploader",
+  "title": "ici-uploader",
+  "description": "ici-uploader binary and config",
+  "version": "5.0.0",
+  "distribution": "Ubuntu",
+  "instanceType": "mem2_ssd1_x4",
+  "release": "20.04",
+  "excludeResource": [
+  ],
+
+  "execDepends": [
+  ]
+}
