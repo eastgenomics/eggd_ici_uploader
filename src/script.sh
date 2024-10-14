@@ -9,21 +9,9 @@ main() {
     ## Download all inputs
     dx-download-all-inputs
 
-    ## Inject token into upload config
-    TOKEN=$(cat $user_access_token_path)
-    sed -i "s/\"apiKey\" : null/\"apiKey\" : $TOKEN/" ~/.illumina/ici-uploader/uploader-config.json
+    ## load image
+    docker load /usr/src/ici_uploader_0.0.1.tar.gz
 
-    ## Launch upload
-    echo $user_access_token
-    echo $run_folder
-    echo $workflow
-
-    echo $user_access_token_path
-    echo $run_folder_path
-    echo $workflow_name
-
-    ## Complete upload
-    ### check it's installed
-    ici-uploader --help
-    ici-uploader analysis upload --help
+    ## launch upload
+    docker run eastgenomics/ici_uploader:v0.0.1 --workflowId $workflow_id --folder $run_folder
 }
