@@ -17,25 +17,18 @@
   ],
   "inputSpec": [
       {
-          "name": "runfolder",
+          "name": "run_folder",
           "label": "Run Folder",
           "class": "string",
           "optional": false,
           "help": "Run data folder to upload - directory structure must match patterns defined in config file"
       },
       {
-          "name": "workflow",
+          "name": "workflow_id",
           "label": "Workflow",
           "class": "string",
           "optional": false,
           "help": "Upload workflow ID"
-      },
-      {
-          "name": "config",
-          "label": "Config File",
-          "class": "file",
-          "optional": "false",
-          "help": "Upload workflow config file"
       }
   ],
   "outputSpec": [],
@@ -53,7 +46,7 @@
   },
   "access": {
     "project": "CONTRIBUTE",
-    "network": ["illumina.com"]
+    "network": ["east-glh.connectedinsights.illumina.com"]
   },
   "regionalOptions": {
     "aws:eu-central-1": {
