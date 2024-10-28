@@ -59,7 +59,7 @@
   },
   "access": {
     "project": "CONTRIBUTE",
-    "network": ["eval-uki.euw2.connectedinsights.illumina.com"]
+    "network": ["illumina.com"]
   },
   "regionalOptions": {
     "aws:eu-central-1": {
