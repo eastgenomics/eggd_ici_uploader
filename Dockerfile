@@ -1,8 +1,7 @@
 FROM ubuntu:24.10 
 WORKDIR /usr/src/
 COPY ici-uploader-bundle_linux_x86_64.tar.gz /usr/src/
-RUN --mount=type=secret,id=apikey \
-    apt-get update && \
+RUN apt-get update && \
     apt-get install --no-install-recommends default-jre -y && \
     apt-get clean && \
     apt-get autoclean && \
@@ -14,8 +13,7 @@ RUN --mount=type=secret,id=apikey \
     # Docker doesn't access systemd by design.
     # ici-uploader still installs everything correctly despite the exit code.
     # We're using "|| exit 0" to stop the exit code from breaking docker build.
-    (cat /run/secrets/apikey | ./ici-uploader install || exit 0) && \
+    (./ici-uploader install || exit 0) && \
     rm ./*
 
 WORKDIR /root/.illumina/ici-uploader
-ENTRYPOINT ["./ici-uploader", "analysis", "upload"]
