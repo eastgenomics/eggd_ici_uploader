@@ -3,7 +3,7 @@
   "title": "eggd_ici_uploader",
   "summary": "Uploads genomic data files to the Illumina Connected Insights (ICI) platform",
   "dxapi": "1.0.0",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "billTo": "org-emee_1",
   "properties": {
       "githubRelease": "v1.0.0"
@@ -25,14 +25,27 @@
       },
       {
           "name": "workflow_id",
-          "label": "Workflow",
+          "label": "Workflow ID",
           "class": "string",
           "optional": false,
           "help": "Upload workflow ID"
+      },
+      {
+          "name": "api_key_file",
+          "label": "API key file",
+          "class": "file",
+          "optional": false,
+          "help": "File containing user API key"
       }
+
   ],
   "outputSpec": [],
   "runSpec": {
+    "assetDepends": [
+        { 
+            "id": "record-GvPk81Q4f23zf7879Z29ZX1k"
+        }
+    ],
     "timeoutPolicy": {
       "*": {
         "hours": 48
@@ -46,7 +59,7 @@
   },
   "access": {
     "project": "CONTRIBUTE",
-    "network": ["east-glh.connectedinsights.illumina.com"]
+    "network": ["eval-uki.euw2.connectedinsights.illumina.com"]
   },
   "regionalOptions": {
     "aws:eu-central-1": {
