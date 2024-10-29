@@ -24,5 +24,5 @@ main() {
     # bash -c with single quotes is the only way to use docker container's internal env variables
     # two steps needed - authenticate, then upload
     docker exec uploader bash -c './ici-uploader configure --api-key $(cat /in/api_key_file/${API_KEY_FILENAME})'
-    docker exec uploader bash -c './ici-uploader --workflowId $WORKFLOW_ID --folder /in/${RUN_FOLDER}'
+    docker exec uploader bash -c './ici-uploader analysis upload --workflowId $WORKFLOW_ID --folder /in/${RUN_FOLDER}'
 }
