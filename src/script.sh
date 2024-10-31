@@ -51,10 +51,12 @@ handle_samplesheet() {
 }
 
 main() {
+    # This will download all of the non-run-related inputs (API key, etc.)
+    # See next comment for run-related input
     dx-download-all-inputs
 
     # DNANexus apps don't accept folders as valid arguments, so we can't
-    # use dx-download-all-inputs. We need to use recursive dx download instead
+    # use dx-download-all-inputs for the run folder. We need to use recursive dx download instead
     dx download -r ${DX_PROJECT_CONTEXT_ID}:${run_folder} -o in/
 
     # head -n1 returns the first match in the first directory where a samplesheet is found
