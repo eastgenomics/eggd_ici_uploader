@@ -29,11 +29,11 @@ make_case_metadata(){
 
     local SAMPLE_ARRAY=($(extract_samples $SAMPLESHEET))
 
-    echo "Sample_ID,Tumor_Type" > custom_case_metadata.csv
+    echo "Sample_ID,Case_ID,Tumor_Type" > custom_case_metadata.csv
 
     # the numeric string is the SNOMED ID for "Tumor of Unknown Origin"
     for SAMPLE in ${SAMPLE_ARRAY[@]}; do
-        echo "$SAMPLE,255051004" >> custom_case_metadata.csv
+        echo "${SAMPLE},${SAMPLE},255051004" >> custom_case_metadata.csv
     done
 }
 
