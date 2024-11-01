@@ -84,11 +84,10 @@ main() {
         docker exec uploader bash -c 'ls /in/*'
         exit 0
     else
-        echo "\$dry_run was false. Was that what you asked?"
         # bash -c with single quotes is the only way to use docker container's internal env variables
         # three steps needed - authenticate, upload run, upload case metadata
-        #docker exec uploader bash -c './ici-uploader configure --api-key $(cat /in/api_key_file/${API_KEY_FILENAME})'
-        #docker exec uploader bash -c './ici-uploader analysis upload --workflowId $WORKFLOW_ID --folder /in/${RUN_FOLDER_NAME}'
-        #docker exec uploader bash -c './ici-uploader case-data --filePath /in/custom_case_metadata.csv'
+        docker exec uploader bash -c './ici-uploader configure --api-key $(cat /in/api_key_file/${API_KEY_FILENAME})'
+        docker exec uploader bash -c './ici-uploader analysis upload --workflowId $WORKFLOW_ID --folder /in/${RUN_FOLDER_NAME}'
+        docker exec uploader bash -c './ici-uploader case-data --filePath /in/custom_case_metadata.csv'
     fi
 }
