@@ -41,12 +41,7 @@ handle_samplesheet() {
     local SAMPLESHEET_PATH=$1
     local SAMPLESHEET_DIRNAME=$(dirname $SAMPLESHEET_PATH)
     local SAMPLESHEET_BASENAME=$(basename $SAMPLESHEET_PATH)
-    # here we coerce the samplesheet name to SampleSheet.csv
-    if ! egrep -q "^SampleSheet.csv" <<< $SAMPLESHEET_BASENAME; then
-        rename -d "s/.*SampleSheet.*.csv/SampleSheet.csv/" $SAMPLESHEET_PATH
-    fi
-    # no matter what we end up with SampleSheet.csv in our directory
-    # return it to be used by other functions
+    mv ${SAMPLESHEET_DIRNAME}/${SAMPLESHEET_BASENAME} ${SAMPLESHEET_DIRNAME}/SampleSheet.csv
     echo "$SAMPLESHEET_DIRNAME/SampleSheet.csv"
 }
 
@@ -80,9 +75,20 @@ main() {
         --entrypoint /bin/bash \
         -itd $DOCKER_IMAGE
 
-    # bash -c with single quotes is the only way to use docker container's internal env variables
-    # three steps needed - authenticate, upload run, upload case metadata
-    docker exec uploader bash -c './ici-uploader configure --api-key $(cat /in/api_key_file/${API_KEY_FILENAME})'
-    docker exec uploader bash -c './ici-uploader analysis upload --workflowId $WORKFLOW_ID --folder /in/${RUN_FOLDER_NAME}'
-    docker exec uploader bash -c './ici-uploader case-data --filePath /in/custom_case_metadata.csv'
+    if [ $dry_run == true ]; then
+        echo -e "#-----------\n\tPRINTING CUSTOM CASE DATA\n#-----------"
+        docker exec uploader bash -c 'cat /in/custom_case_metadata.csv'
+        echo -e "\n#-----------\n\tCONTENTS OF /in\n#-----------"
+        docker exec uploader bash -c 'ls /in/'
+        echo -e "\n#-----------\n\tCONTENTS OF /in/*\n#-----------"
+        docker exec uploader bash -c 'ls /in/*'
+        exit 0
+    else
+        echo "\$dry_run was false. Was that what you asked?"
+        # bash -c with single quotes is the only way to use docker container's internal env variables
+        # three steps needed - authenticate, upload run, upload case metadata
+        #docker exec uploader bash -c './ici-uploader configure --api-key $(cat /in/api_key_file/${API_KEY_FILENAME})'
+        #docker exec uploader bash -c './ici-uploader analysis upload --workflowId $WORKFLOW_ID --folder /in/${RUN_FOLDER_NAME}'
+        #docker exec uploader bash -c './ici-uploader case-data --filePath /in/custom_case_metadata.csv'
+    fi
 }
