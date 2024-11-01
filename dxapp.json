@@ -28,7 +28,7 @@
           "label": "Workflow ID",
           "class": "string",
           "optional": false,
-          "help": "Upload workflow ID"
+          "help": "Workflow ID"
       },
       {
           "name": "api_key_file",
@@ -36,8 +36,15 @@
           "class": "file",
           "optional": false,
           "help": "File containing user API key"
+      },
+      {
+          "name": "dry_run",
+          "label": "Dry run flag",
+          "class": "boolean",
+          "optional": true,
+          "default": false,
+          "help": "Print commands and contents of files to be uploaded without execution"
       }
-
   ],
   "outputSpec": [],
   "runSpec": {
@@ -47,7 +54,7 @@
         }
     ],
     "timeoutPolicy": {
-      "*": {
+      "main": {
         "hours": 48
       }
     },
@@ -64,7 +71,7 @@
   "regionalOptions": {
     "aws:eu-central-1": {
       "systemRequirements": {
-        "*": {
+        "main": {
           "instanceType": "mem1_ssd1_v2_x4"
         }
       }
