@@ -69,7 +69,7 @@ main() {
     docker run \
         --name uploader \
         -e API_KEY_FILENAME=$api_key_file_name \
-        -e RUN_FOLDER_NAME=$(basename run_folder) \
+        -e RUN_FOLDER_NAME=$(basename $run_folder) \
         -e WORKFLOW_ID=$workflow_id \
         --mount type=bind,source=/home/dnanexus/in/,target=/in \
         --entrypoint /bin/bash \
