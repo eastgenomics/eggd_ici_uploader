@@ -3,6 +3,8 @@ This could be used as a starting point when developing new apps for DNAnexus
 
 # How to build docker image
 
+Download the ICI uploader and store it in the repo directory.
+
 ```
 docker build -t eastgenomics/ici_uploader:v<SEMANTIC_VERSION> .
 ```
