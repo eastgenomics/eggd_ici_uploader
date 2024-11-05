@@ -4,6 +4,17 @@ set -e -x -o pipefail
 # To report errors specifically:
 #   dx-jobutil-report-error "My error message"
 
+download_run(){
+    RUN_PATH=$1
+    OUT_FOLDER=$2
+
+    if grep -eq "^project-" <<< $RUN_PATH; then
+        dx download -r $RUN_PATH -o $OUT_FOLDER
+    else
+        dx download -r ${DX_PROJECT_CONTEXT_ID}:${RUN_PATH} -o $OUT_FOLDER
+    fi
+}
+
 get_match_line_number(){
 
     FILE=$1
@@ -52,7 +63,7 @@ main() {
 
     # DNANexus apps don't accept folders as valid arguments, so we can't
     # use dx-download-all-inputs for the run folder. We need to use recursive dx download instead
-    dx download -r ${DX_PROJECT_CONTEXT_ID}:${run_folder} -o in/
+    download_run $run_folder in/
 
     # head -n1 returns the first match in the first directory where a samplesheet is found
     ## Potential issue: what happens if there's more than one samplesheet in the topmost directory?
