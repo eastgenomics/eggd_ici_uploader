@@ -49,7 +49,7 @@
   "runSpec": {
       "assetDepends": [
           {
-              "id": "record-GvXKJj8476kK9q1f7pGPGFj4"
+              "id": "record-Gvb0yjQ4jxg120k7KzB0KPkB"
           }
       ],
       "timeoutPolicy": {
@@ -65,7 +65,9 @@
   },
   "access": {
       "project": "CONTRIBUTE",
-      "network": ["illumina.com"]
+      "network": [
+          "*"
+      ]
   },
   "regionalOptions": {
       "aws:eu-central-1": {
