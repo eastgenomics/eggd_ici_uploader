@@ -1,6 +1,6 @@
 {
-  "name": "eggd-ici_uploader",
-  "title": "eggd-ici_uploader",
+  "name": "eggd_ici_uploader",
+  "title": "eggd_ici_uploader",
   "summary": "Uploads genomic data files to the Illumina Connected Insights (ICI) platform",
   "dxapi": "1.0.0",
   "version": "1.0.0",
