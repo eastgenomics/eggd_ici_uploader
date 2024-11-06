@@ -67,7 +67,7 @@ main() {
 
     # head -n1 returns the first match in the first directory where a samplesheet is found
     ## Potential issue: what happens if there's more than one samplesheet in the topmost directory?
-    SAMPLESHEET_PATH=$(find in/ -name "*SampleSheet*.csv" | head -n1)
+    SAMPLESHEET_PATH=$(find in/ -iname "*SampleSheet*.csv" | head -n1)
     SAMPLESHEET_PATH_UPDATED=$(handle_samplesheet $SAMPLESHEET_PATH)
     make_case_metadata $SAMPLESHEET_PATH_UPDATED
     mv custom_case_metadata.csv in/
