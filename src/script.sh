@@ -6,7 +6,7 @@ set -e -x -o pipefail
 
 download_run(){
     RUN_PATH=$1
-    OUT_FOLDER=$2
+    OUT_FOLDER=$(sed "s:/$::g" <<< $2) # removes trailing "/" if present
 
     if grep -Eq "^project-" <<< $RUN_PATH; then
         dx download -r $RUN_PATH -o $OUT_FOLDER
