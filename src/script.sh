@@ -8,7 +8,7 @@ download_run(){
     RUN_PATH=$1
     OUT_FOLDER=$2
 
-    if grep -eq "^project-" <<< $RUN_PATH; then
+    if grep -Eq "^project-" <<< $RUN_PATH; then
         dx download -r $RUN_PATH -o $OUT_FOLDER
     else
         dx download -r ${DX_PROJECT_CONTEXT_ID}:${RUN_PATH} -o $OUT_FOLDER
