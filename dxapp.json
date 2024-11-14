@@ -53,7 +53,7 @@
       ],
       "timeoutPolicy": {
           "*": {
-              "hours": 3
+              "hours": 4
           }
       },
       "interpreter": "bash",
