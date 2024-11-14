@@ -6,7 +6,7 @@ set -e -x -o pipefail
 # To report errors specifically:
 #   dx-jobutil-report-error "My error message"
 
-download_run(){
+function download_run() {
 
     local RUN_PATH
     RUN_PATH=$1
@@ -21,7 +21,7 @@ download_run(){
     fi
 }
 
-get_match_line_number(){
+function get_match_line_number(){
 
     local FILE
     FILE=$1
@@ -35,7 +35,7 @@ get_match_line_number(){
     echo "${LINE_NUMBER}"
 }
 
-extract_samples(){
+function extract_samples(){
 
     local SAMPLESHEET
     SAMPLESHEET=$1
@@ -52,7 +52,7 @@ extract_samples(){
     tail -n+"${START_AT}" "${SAMPLESHEET}" | cut -f1 -d,
 }
 
-make_case_metadata(){
+function make_case_metadata(){
 
     local SAMPLESHEET
     SAMPLESHEET=$1
@@ -68,7 +68,7 @@ make_case_metadata(){
     done
 }
 
-handle_samplesheet() {
+function handle_samplesheet() {
 
     local SAMPLESHEET_PATH
     SAMPLESHEET_PATH=$1
@@ -83,7 +83,7 @@ handle_samplesheet() {
     echo "${SAMPLESHEET_DIRNAME}/SampleSheet.csv"
 }
 
-main() {
+function main() {
     # This will download all of the non-run-related inputs (API key, etc.)
     # See next comment for run-related input
     dx-download-all-inputs
