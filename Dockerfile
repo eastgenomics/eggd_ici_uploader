@@ -14,6 +14,7 @@ RUN apt-get update && \
     # ici-uploader still installs everything correctly despite the exit code.
     # We're using "|| exit 0" to stop the exit code from breaking docker build.
     (./ici-uploader install || exit 0) && \
+    # clean up installation intermediates
     rm ./*
 
 WORKDIR /root/.illumina/ici-uploader
