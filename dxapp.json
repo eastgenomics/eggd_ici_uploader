@@ -9,7 +9,6 @@
       "githubRelease": "v1.0.0"
   },
   "developers": [
-      "user-spaul4",
       "org-emee_1"
   ],
   "authorizedUsers": [
@@ -54,7 +53,7 @@
       ],
       "timeoutPolicy": {
           "*": {
-              "hours": 48
+              "hours": 3
           }
       },
       "interpreter": "bash",
