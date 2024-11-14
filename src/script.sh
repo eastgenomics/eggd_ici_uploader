@@ -1,4 +1,6 @@
 #!/bin/bash
+#
+# DNANexus app script that uploads run data to Illumina Connected Insights (ICI)
 set -e -x -o pipefail
 
 # To report errors specifically:
