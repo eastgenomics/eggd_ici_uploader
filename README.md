@@ -26,9 +26,12 @@ Note: the run project ID is optional. If provided, the app will search that proj
 If not provided, the app will search the project where the app was executed (i.e. your current working project,
 if the `--project` was not also provided to `dx run`).
 
+The following example uses a TSO500 run, but this can be any type of run as long as the corresponding workflow
+ID is provided:
+
 ```bash
 dx run app-eggd_ici_uploader/1.0.0 \
-  -irun_folder="<run project ID>:</path/to/output/folder>" \
+  -irun_folder="project-12345abcde:/output/TSO500-241109_1148/eggd_tso500/" \
   -iworkflow_id="<workflow ID string>" \
   -iapi_key="<API key file>"
 ```
