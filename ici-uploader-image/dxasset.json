@@ -1,0 +1,9 @@
+{
+  "name": "ici-uploader-image",
+  "title": "ICI uploader image",
+  "description": "Docker image containing ici-uploader",
+  "version": "1.0.0",
+  "distribution": "Ubuntu",
+  "instanceType": "mem2_ssd1_x4",
+  "release": "20.04"
+}

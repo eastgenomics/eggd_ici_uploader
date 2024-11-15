@@ -1,0 +1,81 @@
+{
+  "name": "eggd_ici_uploader",
+  "title": "eggd_ici_uploader",
+  "summary": "Uploads genomic data files to the Illumina Connected Insights (ICI) platform",
+  "dxapi": "1.0.0",
+  "version": "1.0.0",
+  "billTo": "org-emee_1",
+  "properties": {
+      "githubRelease": "v1.0.0"
+  },
+  "developers": [
+      "org-emee_1"
+  ],
+  "authorizedUsers": [
+      "org-emee_1"
+  ],
+  "inputSpec": [
+      {
+          "name": "run_folder",
+          "label": "Run Folder",
+          "class": "string",
+          "optional": false,
+          "help": "Run data folder to upload - directory structure must match patterns defined in config file"
+      },
+      {
+          "name": "workflow_id",
+          "label": "Workflow ID",
+          "class": "string",
+          "optional": false,
+          "help": "Workflow ID"
+      },
+      {
+          "name": "api_key_file",
+          "label": "API key file",
+          "class": "file",
+          "optional": false,
+          "help": "File containing user API key"
+      },
+      {
+          "name": "dry_run",
+          "label": "Dry run",
+          "class": "boolean",
+          "default": false,
+          "help": "Print the contents of custom_case_metadata.csv, and the directory contents of /in. Will not execute upload"
+      }
+  ],
+  "outputSpec": [],
+  "runSpec": {
+      "assetDepends": [
+          {
+              "id": "record-Gvb0yjQ4jxg120k7KzB0KPkB"
+          }
+      ],
+      "timeoutPolicy": {
+          "*": {
+              "hours": 4
+          }
+      },
+      "interpreter": "bash",
+      "file": "src/script.sh",
+      "distribution": "Ubuntu",
+      "release": "20.04",
+      "version": "0"
+  },
+  "access": {
+      "project": "CONTRIBUTE",
+      "allProjects": "VIEW",
+      "network": [
+          "*"
+      ]
+  },
+  "regionalOptions": {
+      "aws:eu-central-1": {
+          "systemRequirements": {
+              "*": {
+                  "instanceType": "mem2_ssd1_v2_x16"
+              }
+          }
+      }
+  }
+}
