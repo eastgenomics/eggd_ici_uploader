@@ -58,7 +58,7 @@ function make_case_metadata(){
     SAMPLESHEET=$1
 
     local SAMPLE_ARRAY
-    mapfile SAMPLE_ARRAY <<< "$(extract_samples "${SAMPLESHEET}")"
+    mapfile -t SAMPLE_ARRAY <<< "$(extract_samples "${SAMPLESHEET}")"
 
     echo "Sample_ID,Case_ID,Tumor_Type" > custom_case_metadata.csv
 
